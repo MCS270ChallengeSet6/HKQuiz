@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Hello Kitty Quiz</string>
+
+    <string name="question_1">Hello Kitty\'s boyfriend\'s name is Dear Daniel.</string>
+    //true
+    <string name="question_2">Hello Kitty\'s favorite color is pink.</string>
+    //false, red
+    <string name="question_3">Hello Kitty lives in London.</string>
+    //true
+    <string name="question_4">Hello Kitty has a twin sister.</string>
+    //true
+    <string name="question_5">Hello kitty has a pet dog.</string>
+    //false, a pet cat named Charmmy Kitty
+    <string name="question_6">Hello Kitty doesn\'t know how to play any instruments.</string>
+    \\false, at least knows piano
+
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="next_button">Next</string>
+    <string name="prev_button">Prev</string>
+
+    <string name="correct_toast">This is correct!</string>
+    <string name="incorrect_toast">Nope! Incorrect.</string>
+    <string name="grade_snackbar">Your quiz grade is </string>
+
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="judgment_toast">Cheating is wrong.</string>
+</resources>

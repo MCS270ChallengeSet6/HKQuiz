@@ -34,14 +34,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/true_button"
-            style="?android:attr/borderlessButtonStyle"/>
+            />
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/false_button"
-            style="?android:attr/borderlessButtonStyle"/>
+            />
 
     </LinearLayout>
 
@@ -70,7 +70,7 @@
         android:text="@string/prev_button"
         app:icon="@drawable/arrow_left"
         app:iconGravity="start"
-        style="?android:attr/borderlessButtonStyle"/>
+        />
 
     <Button
         android:id="@+id/next_button"
@@ -79,7 +79,7 @@
         android:text="@string/next_button"
         app:icon="@drawable/arrow_right"
         app:iconGravity="end"
-        style="?android:attr/borderlessButtonStyle"/>
+        />
 
     </LinearLayout>
 

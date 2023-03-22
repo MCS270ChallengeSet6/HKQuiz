@@ -180,8 +180,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateScoreTracker(){
-        val scoreText = numCorrect/(numCorrect+numIncorrect)
-        binding.scoreTextView.setText("Overall score:".plus(scoreText))
+
+        val scoreText = if(numCorrect+numIncorrect == 0) {
+            0
+        }
+        else {
+            numCorrect*100/(numCorrect+numIncorrect)
+        }
+
+
+        binding.scoreTextView.setText("Overall score: ".plus(scoreText).plus("%"))
     }
 
 

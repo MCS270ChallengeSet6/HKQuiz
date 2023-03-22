@@ -47,14 +47,17 @@ class MainActivity : AppCompatActivity() {
         binding.questionTextView.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
+            updateScoreTracker()
         }
 
         binding.trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
+            updateScoreTracker()
         }
 
         binding.falseButton.setOnClickListener { view: View ->
             checkAnswer(false)
+            updateScoreTracker()
         }
 
         binding.nextButton.setOnClickListener {
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             quizViewModel.moveToNext()
             updateQuestion()
             quizViewModel.isCheater = false
+            updateScoreTracker()
         }
 
         binding.prevButton.setOnClickListener {
@@ -69,6 +73,7 @@ class MainActivity : AppCompatActivity() {
             quizViewModel.moveToPrevious()
             updateQuestion()
             quizViewModel.isCheater = false
+            updateScoreTracker()
         }
 
         binding.cheatButton.setOnClickListener {
@@ -79,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateQuestion()
+        updateScoreTracker()
     }
 
     override fun onStart() {
@@ -171,6 +177,11 @@ class MainActivity : AppCompatActivity() {
             //    BaseTransientBottomBar.LENGTH_;LONG
             //).show()
         }
+    }
+
+    private fun updateScoreTracker(){
+        val scoreText = numCorrect/(numCorrect+numIncorrect)
+        binding.scoreTextView.setText("Overall score:".plus(scoreText))
     }
 
 

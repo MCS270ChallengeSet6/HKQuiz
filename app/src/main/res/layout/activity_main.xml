@@ -4,8 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginBottom="250dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/score_tracker"/>
 
     <TextView
         android:id="@+id/question_text_view"
@@ -25,14 +34,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/true_button"
-            style="?android:attr/borderlessButtonStyle"/>
+            />
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/false_button"
-            style="?android:attr/borderlessButtonStyle"/>
+            />
 
     </LinearLayout>
 
@@ -61,7 +70,7 @@
         android:text="@string/prev_button"
         app:icon="@drawable/arrow_left"
         app:iconGravity="start"
-        style="?android:attr/borderlessButtonStyle"/>
+        />
 
     <Button
         android:id="@+id/next_button"
@@ -70,7 +79,7 @@
         android:text="@string/next_button"
         app:icon="@drawable/arrow_right"
         app:iconGravity="end"
-        style="?android:attr/borderlessButtonStyle"/>
+        />
 
     </LinearLayout>
 

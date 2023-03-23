@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var numCorrect = 0
     private var numIncorrect = 0
 
+
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -47,20 +48,24 @@ class MainActivity : AppCompatActivity() {
         binding.questionTextView.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
+            updateCheatCount()
         }
 
         binding.trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
+            updateCheatCount()
         }
 
         binding.falseButton.setOnClickListener { view: View ->
             checkAnswer(false)
+            updateCheatCount()
         }
 
         binding.nextButton.setOnClickListener {
             isAnswered()
             quizViewModel.moveToNext()
             updateQuestion()
+            updateCheatCount()
             quizViewModel.isCheater = false
         }
 
@@ -68,6 +73,7 @@ class MainActivity : AppCompatActivity() {
             isAnswered()
             quizViewModel.moveToPrevious()
             updateQuestion()
+            updateCheatCount()
             quizViewModel.isCheater = false
         }
 
@@ -79,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateQuestion()
+        updateCheatCount()
     }
 
     override fun onStart() {
@@ -122,6 +129,10 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             numIncorrect+=1
+        }
+
+        if(quizViewModel.isCheater){
+            quizViewModel.numCheated+=1
         }
 
         val messageResId = when {
@@ -171,6 +182,11 @@ class MainActivity : AppCompatActivity() {
             //    BaseTransientBottomBar.LENGTH_;LONG
             //).show()
         }
+    }
+
+    private fun updateCheatCount(){
+
+        binding.cheatTextView.setText("Questions Cheated: "+quizViewModel.numCheated)
     }
 
 

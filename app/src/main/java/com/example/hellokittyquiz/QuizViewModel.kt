@@ -21,6 +21,9 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         get() = savedStateHandle.get(IS_CHEATER_KEY) ?: false
         set(value) = savedStateHandle.set(IS_CHEATER_KEY, value)
 
+    var numCorrect = 0
+    var numIncorrect = 0
+
     var numCheated = 0
 
     private var currentIndex: Int

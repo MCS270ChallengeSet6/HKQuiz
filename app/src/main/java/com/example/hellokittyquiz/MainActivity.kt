@@ -47,23 +47,27 @@ class MainActivity : AppCompatActivity() {
         binding.questionTextView.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
+            updateCheatCount()
             updateScoreTracker()
         }
 
         binding.trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
+            updateCheatCount()
             updateScoreTracker()
         }
 
         binding.falseButton.setOnClickListener { view: View ->
             checkAnswer(false)
             updateScoreTracker()
+            updateCheatCount()
         }
 
         binding.nextButton.setOnClickListener {
             isAnswered()
             quizViewModel.moveToNext()
             updateQuestion()
+            updateCheatCount()
             quizViewModel.isCheater = false
             updateScoreTracker()
         }
@@ -72,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             isAnswered()
             quizViewModel.moveToPrevious()
             updateQuestion()
+            updateCheatCount()
             quizViewModel.isCheater = false
             updateScoreTracker()
         }
@@ -84,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateQuestion()
+        updateCheatCount()
         updateScoreTracker()
     }
 
@@ -128,6 +134,10 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             numIncorrect+=1
+        }
+
+        if(quizViewModel.isCheater){
+            quizViewModel.numCheated+=1
         }
 
         val messageResId = when {
@@ -177,6 +187,11 @@ class MainActivity : AppCompatActivity() {
             //    BaseTransientBottomBar.LENGTH_;LONG
             //).show()
         }
+    }
+
+    private fun updateCheatCount(){
+
+        binding.cheatTextView.setText("Questions Cheated: "+quizViewModel.numCheated)
     }
 
     private fun updateScoreTracker(){

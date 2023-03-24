@@ -21,9 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     private val quizViewModel: QuizViewModel by viewModels()
 
-    private var numCorrect = 0
-    private var numIncorrect = 0
-
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -130,10 +127,10 @@ class MainActivity : AppCompatActivity() {
         quizViewModel.currentQuestionAnswered()
 
         if (userAnswer == correctAnswer){
-            numCorrect+=1
+            quizViewModel.numCorrect+=1
         }
         else{
-            numIncorrect+=1
+            quizViewModel.numIncorrect+=1
         }
 
         if(quizViewModel.isCheater){
@@ -171,8 +168,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkGrade() {
-        if(numCorrect + numIncorrect == quizViewModel.questionBankSize){
-            val grade = (numCorrect*100)/quizViewModel.questionBankSize
+        if(quizViewModel.numCorrect + quizViewModel.numIncorrect == quizViewModel.questionBankSize){
+            val grade = (quizViewModel.numCorrect*100)/quizViewModel.questionBankSize
 
             Toast.makeText(
                 this,
@@ -196,11 +193,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateScoreTracker(){
 
-        val scoreText = if(numCorrect+numIncorrect == 0) {
+        val scoreText = if(quizViewModel.numCorrect+quizViewModel.numIncorrect == 0) {
             0
         }
         else {
-            numCorrect*100/(numCorrect+numIncorrect)
+            quizViewModel.numCorrect*100/(quizViewModel.numCorrect+quizViewModel.numIncorrect)
         }
 
 

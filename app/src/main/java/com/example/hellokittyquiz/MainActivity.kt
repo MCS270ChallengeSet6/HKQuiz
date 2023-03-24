@@ -178,11 +178,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
 
-            //Snackbar.make(
-            //    binding.questionTextView,
-            //    R.string.grade_snackbar,
-            //    BaseTransientBottomBar.LENGTH_;LONG
-            //).show()
         }
     }
 

@@ -62,19 +62,23 @@ class MainActivity : AppCompatActivity() {
 
         binding.nextButton.setOnClickListener {
             isAnswered()
+            quizViewModel.cheatMarker()
             quizViewModel.moveToNext()
             updateQuestion()
             updateCheatCount()
             quizViewModel.isCheater = false
+            quizViewModel.cheatUpdater()
             updateScoreTracker()
         }
 
         binding.prevButton.setOnClickListener {
             isAnswered()
+            quizViewModel.cheatMarker()
             quizViewModel.moveToPrevious()
             updateQuestion()
             updateCheatCount()
             quizViewModel.isCheater = false
+            quizViewModel.cheatUpdater()
             updateScoreTracker()
         }
 

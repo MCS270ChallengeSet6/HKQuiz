@@ -25,6 +25,7 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
     var numIncorrect = 0
 
     var numCheated = 0
+    var prevCheats: MutableList<Int> = mutableListOf()
 
     private var currentIndex: Int
         get() = savedStateHandle.get(CURRENT_INDEX_KEY) ?: 0
@@ -55,6 +56,18 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
             questionBank.size - 1
         } else {
             (currentIndex - 1) % questionBank.size
+        }
+    }
+
+    fun cheatMarker(){
+        if(isCheater){
+            prevCheats.add(currentIndex)
+        }
+    }
+
+    fun cheatUpdater(){
+        if(prevCheats.contains(currentIndex)){
+            isCheater = true
         }
     }
 
